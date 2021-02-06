@@ -1,6 +1,6 @@
 test:
   image: yourlabs/python
-  script: pip install -e .[test] && py.test --cov-fail-under=99
+  script: pip install .[test] && py.test --cov-fail-under=99
 
 qa:
   stage: test
