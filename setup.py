@@ -5,7 +5,7 @@ setup(
     name='starlette-apps',
     versioning='dev',
     setup_requires='setupmeta',
-    modules=['apps'],
+    py_modules=['apps'],
     author='James Pic',
     author_email='jamespic@gmail.com',
     url='https://yourlabs.io/oss/starlette-apps',
