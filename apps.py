@@ -130,5 +130,5 @@ class Project:
         return routes
 
     async def startup(self):  # pragma: no cover
-        for app in self.app.values():
+        for app in self.apps.values():
             await app.startup()
