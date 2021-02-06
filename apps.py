@@ -41,7 +41,7 @@ class App:
     def setup(self):
         pass  # pragma: no cover
 
-    def startup(self):
+    async def startup(self):
         pass  # pragma: no cover
 
 
