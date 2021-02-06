@@ -27,11 +27,12 @@ class App:
         return getattr(self, 'pattern', self.name.lower())
 
     def get_mount(self):
-        if self.routes or self.controllers or self.views:
+        routes = self.get_routes()
+        if routes:
             return Mount(
                 '/' + self.get_pattern(),
                 name=self.name,
-                routes=self.get_routes()
+                routes=routes,
             )
 
     def get_routes(self, *extra):
