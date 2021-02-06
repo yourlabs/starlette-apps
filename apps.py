@@ -53,7 +53,8 @@ class Project:
             parts = os.environ['PROJECT'].split('.')
             mod = importlib.import_module('.'.join(parts[:-1]))
             Project._singleton = getattr(mod, parts[-1])
-            assert Project._singleton, f'Project {os.environ["PROJECT"]} not found'
+            if not Project._singleton:
+                raise Exception(f'Project {os.environ["PROJECT"]} not found')
         return Project._singleton
 
     def __init__(self, **settings):
