@@ -66,6 +66,9 @@ class Project:
         Project._singleton = self
         self.project = self.config('PROJECT', default=None)
         if not self.project:
+            self.project = os.getenv('PROJECT', '')
+
+        if not self.project:
             frame = inspect.stack()[-1]
             filename = frame.filename.split('/')[-1]
             self.project_module = filename.replace('.py', '')
