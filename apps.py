@@ -132,3 +132,6 @@ class Project:
     async def startup(self):  # pragma: no cover
         for app in self.apps.values():
             await app.startup()
+
+    def __str__(self):
+        return self.project
