@@ -119,7 +119,8 @@ class Project:
         kwargs.setdefault('routes', [])
         kwargs['routes'] += self.routes()
 
-        return Starlette(**kwargs)
+        self._starlette = Starlette(**kwargs)
+        return self._starlette
 
     def routes(self):
         routes = []
