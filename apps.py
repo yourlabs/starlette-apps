@@ -49,12 +49,12 @@ class Project:
     @classmethod
     def current(cls):
         """Return the current project, from PROJECT env var if necessary."""
-        if '_singleton' not in cls.__dict__:  # pragma: no cover
+        if '_singleton' not in Project.__dict__:  # pragma: no cover
             parts = os.environ['PROJECT'].split('.')
             mod = importlib.import_module('.'.join(parts[:-1]))
-            cls._singleton = getattr(mod, parts[-1])
-            assert cls._singleton, f'Project {os.environ["PROJECT"]} not found'
-        return cls._singleton
+            Project._singleton = getattr(mod, parts[-1])
+            assert Project._singleton, f'Project {os.environ["PROJECT"]} not found'
+        return Project._singleton
 
     def __init__(self, **settings):
         self.config = Config('.env', settings)
