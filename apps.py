@@ -56,15 +56,13 @@ class Project:
         return cls._singleton
 
     def __init__(self, **settings):
-        Project._singleton = self
-
         self.config = Config('.env', settings)
-
         self.project_setup()
         self.apps_setup()
 
     def project_setup(self):  # pragma: no cover
         """Setup the PROJECT env var."""
+        Project._singleton = self
         self.project = self.config('PROJECT', default=None)
         if not self.project:
             frame = inspect.stack()[-1]
