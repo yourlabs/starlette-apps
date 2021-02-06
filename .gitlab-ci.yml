@@ -1,0 +1,16 @@
+test:
+  image: yourlabs/python
+  script: pip install -e .[test] && py.test --cov-fail-under=99
+
+qa:
+  stage: test
+  image: yourlabs/python
+  script: flake8
+
+pypi:
+  stage: deploy
+  image: yourlabs/python
+  script: pypi-release
+  only:
+    refs:
+    - tags
