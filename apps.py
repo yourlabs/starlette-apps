@@ -120,7 +120,9 @@ class Project:
 
         kwargs.setdefault('middleware', [])
         for app in self.apps.values():
-            kwargs['middleware'] += app.get_middlewares()
+            middlewares = app.get_middlewares()
+            if middlewares:
+                kwargs['middleware'] += middlewares
 
         kwargs.setdefault('on_startup', [])
         kwargs['on_startup'].append(self.startup)
