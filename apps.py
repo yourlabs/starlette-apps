@@ -16,7 +16,11 @@ class App:
         routes=None,
         middlewares=None,
     ):
-        self.name = name or getattr(self, 'name', type(self).__name__)
+        self.name = name or getattr(
+            self,
+            'name',
+            type(self).__name__ if type(self) != App else None
+        )
         self.routes = routes or getattr(self, 'routes', [])
         self.middlewares = middlewares or getattr(self, 'middlewares', [])
 
