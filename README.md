@@ -43,7 +43,7 @@ This is a solution.
 
 ### Instanciation
 
-Instanciating a Project will basically get the `.app` attribute of each modulle
+Instanciating a Project will basically get the `.app` attribute of each module
 in `APPS`, which you may define for example as such:
 
 ```python
@@ -59,6 +59,9 @@ app = apps.App(
     ],
 )
 ```
+
+If you don't define any app variable, then it will create one by default, so
+you can still add any module to your APPS.
 
 ### Methods & Declarative
 

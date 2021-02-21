@@ -94,7 +94,9 @@ class Project:
         apps = self.config('APPS', cast=CommaSeparatedStrings, default=[])
         for arg in apps:
             mod = importlib.import_module(arg)
-            app = getattr(mod, 'app')
+            app = getattr(mod, 'app', None)
+            if not app:
+                app = App()
             if not getattr(app, 'name', None):
                 app.name = arg.split('.')[-1]
             app.module = mod
