@@ -128,6 +128,9 @@ a class attribute with itself. But this also works from subshells because it
 writes the `PROJECT` environment variable, ie. if you instanciate the project,
 run a shell command which invokes Python: `Project.current()` will still work.
 
+PROJECT environment variable should be like `your_script:project`, with `:` to
+separate module from variable name.
+
 #### 3. Apps setup
 
 Finally, it will import every app module one by one, as it does so it will:

@@ -54,9 +54,11 @@ class Project:
     def current(cls):
         """Return the current project, from PROJECT env var if necessary."""
         if '_singleton' not in Project.__dict__:  # pragma: no cover
-            parts = os.environ['PROJECT'].split('.')
-            mod = importlib.import_module('.'.join(parts[:-1]))
-            Project._singleton = getattr(mod, parts[-1])
+            if 'PROJECT' not in os.environ:
+                raise Exception(f'PROJECT env var not defined')
+            modname, varname = os.environ['PROJECT'].split(':')
+            mod = importlib.import_module(modname)
+            Project._singleton = getattr(mod, varname)
             if not Project._singleton:
                 raise Exception(f'Project {os.environ["PROJECT"]} not found')
         return Project._singleton
